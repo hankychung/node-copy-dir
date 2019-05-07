@@ -1,30 +1,23 @@
 const fs = require('fs')
 const stat = fs.stat
 const statSync = fs.statSync
-const chalk = require('chalk')
-let err = 0
 
 async function copyDir(src, dist) {
-  try {
-    await checkStat(src)
-    await checkStat(dist)
-    const dirName = src.indexOf('/') === -1 ? src : src.split('/').pop(),
-      distDir = `${dist}/${dirName}`
-    await makeDir(distDir)
-    const paths = fs.readdirSync(src)
-    paths.forEach(path => {
-      const srcPath = `${src}/${path}`
-      if (statSync(srcPath).isFile()) {
-        fs.createReadStream(srcPath).pipe(fs.createWriteStream(`${distDir}/${path}`))
-      } else if (statSync(srcPath).isDirectory()) {
-        copyDir(srcPath, distDir)
-      }
-    })
-  }
-  catch (e) {
-    console.log(chalk.red(e))
-    err++
-  }
+  await checkStat(src)
+  await checkStat(dist)
+  const dirName = src.indexOf('/') === -1 ? src : src.split('/').pop(),
+    distDir = `${dist}/${dirName}`
+  await makeDir(distDir)
+  const paths = fs.readdirSync(src)
+  paths.forEach(path => {
+    const srcPath = `${src}/${path}`
+    if (statSync(srcPath).isFile()) {
+      fs.createReadStream(srcPath).pipe(fs.createWriteStream(`${distDir}/${path}`))
+    } else if (statSync(srcPath).isDirectory()) {
+      copyDir(srcPath, distDir)
+    }
+  })
+  return ('successed')
 }
 
 function checkStat(src) {
@@ -42,7 +35,7 @@ function checkStat(src) {
 }
 
 function makeDir(path) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     fs.access(path, fs.constants.F_OK, err => {
       if (err) fs.mkdirSync(path)
       resolve()
@@ -50,8 +43,4 @@ function makeDir(path) {
   })
 }
 
-module.exports = async function (src, dist) {
-  await copyDir(src, dist)
-  if (!err) console.log(chalk.green('Done!'))
-  return ('success')
-}
+module.exports = copyDir

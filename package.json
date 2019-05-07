@@ -21,8 +21,5 @@
   "bugs": {
     "url": "https://github.com/hankychung/node-copy-dir/issues"
   },
-  "homepage": "https://github.com/hankychung/node-copy-dir#readme",
-  "devDependencies": {
-    "chalk": "^2.4.2"
-  }
+  "homepage": "https://github.com/hankychung/node-copy-dir#readme"
 }
