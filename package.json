@@ -1,6 +1,6 @@
 {
   "name": "@hankychung/node-copy-dir",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "copy the whole directory from here to there, base on node.js",
   "main": "index.js",
   "repository": {
