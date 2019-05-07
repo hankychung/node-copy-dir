@@ -2,12 +2,13 @@ const fs = require('fs')
 const stat = fs.stat
 const statSync = fs.statSync
 
-async function copyDir(src, dist) {
+async function copyDir(src, dist, withRoot = true) {
+  if (!src || !dist) throw 'path required!'
   await checkStat(src)
   await checkStat(dist)
   const dirName = src.indexOf('/') === -1 ? src : src.split('/').pop(),
-    distDir = `${dist}/${dirName}`
-  await makeDir(distDir)
+    distDir = withRoot ? `${dist}/${dirName}` : dist
+  if (withRoot) await makeDir(distDir)
   const paths = fs.readdirSync(src)
   paths.forEach(path => {
     const srcPath = `${src}/${path}`
