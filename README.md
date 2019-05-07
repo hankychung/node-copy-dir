@@ -5,14 +5,12 @@ copy the whole directory from here to there
 ```
 const copyDir = require('@hankychung/node-copy-dir')
 
-copyDir('./somewhere/src', './other/dest').then(res => {
-  console.log(res)
+copyDir('./somewhere/src', './other/dest').then(() => {
+  // the whole `src` directory will be copied to the `dest` directory, if the promise is resolved
 }).catch(e => {
   console.log(e)
 })
 ```
-
-then the whole `src` directory will be copyed to the `dest` directory, if the promise is resolved
 
 ## params
 _example: copyDir(srcPath, destPath, isIncludeRootFolder)_
