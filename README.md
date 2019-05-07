@@ -15,17 +15,24 @@ copyDir('./somewhere/src', './other/dest').then(res => {
 then the whole `src` directory will be copyed to the `dest` directory, if the promise is resolved
 
 ## params
-copyDir(srcPath, destPath, isIncludeRootFolder)
+_example: copyDir(srcPath, destPath, isIncludeRootFolder)_
 
-`srcPath`
+**_srcPath_**
+
 type: `string`
+
 desc: the source directory path
 
-`destPath`
+**_destPath_**
+
 type: `string`
+
 desc: the destination path
 
-`isIncludeRootFolder`
+**_isIncludeRootFolder_**
+
 type: `boolean`
+
 desc: copy with the source directory's root folder or not
+
 default: `true`

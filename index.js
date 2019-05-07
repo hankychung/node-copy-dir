@@ -4,6 +4,7 @@ const statSync = fs.statSync
 
 async function copyDir(src, dist, withRoot = true) {
   if (!src || !dist) throw 'path required!'
+  if (typeof (src) !== 'string' || typeof (dist) !== 'string') throw 'path must be string!'
   await checkStat(src)
   await checkStat(dist)
   const dirName = src.indexOf('/') === -1 ? src : src.split('/').pop(),
