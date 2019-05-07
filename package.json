@@ -1,0 +1,28 @@
+{
+  "name": "node-copy-dir",
+  "version": "1.0.0",
+  "description": "copy the whole directory from here to there, base on node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hankychung/node-copy-dir.git"
+  },
+  "keywords": [
+    "node",
+    "copy",
+    "directory",
+    "tool"
+  ],
+  "author": "Han",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hankychung/node-copy-dir/issues"
+  },
+  "homepage": "https://github.com/hankychung/node-copy-dir#readme",
+  "devDependencies": {
+    "chalk": "^2.4.2"
+  }
+}
